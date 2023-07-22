@@ -15,8 +15,8 @@ public class SMSUtils {
         // Configure Credentials authentication information, including ak, secret, token
         StaticCredentialProvider provider = StaticCredentialProvider.create(Credential.builder()
                 // Please ensure that the environment variables ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set.
-                .accessKeyId(System.getenv("LTAI5tM2jzSiHejE9VVJJXFN"))
-                .accessKeySecret(System.getenv("fe0543xKWjfYZDxymc854hh4xf2xld"))
+                .accessKeyId(System.getenv(""))
+                .accessKeySecret(System.getenv(""))
                 //.securityToken(System.getenv("ALIBABA_CLOUD_SECURITY_TOKEN")) // use STS token
                 .build());
 
@@ -36,7 +36,7 @@ public class SMSUtils {
 
         SendSmsRequest sendSmsRequest = SendSmsRequest.builder()
                 .phoneNumbers(phone)
-                .signName("yiwenlemo@1028503716485430.onaliyun.com")
+                .signName("")
                 .build();
 
         // Asynchronously get the return value of the API request
