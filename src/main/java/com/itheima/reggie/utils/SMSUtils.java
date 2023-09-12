@@ -10,11 +10,10 @@ import darabonba.core.client.ClientOverrideConfiguration;
 import java.util.concurrent.CompletableFuture;
 
 public class SMSUtils {
+
     public static void sendMessage(String phone) throws Exception {
 
-        // Configure Credentials authentication information, including ak, secret, token
         StaticCredentialProvider provider = StaticCredentialProvider.create(Credential.builder()
-                // Please ensure that the environment variables ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set.
                 .accessKeyId(System.getenv(""))
                 .accessKeySecret(System.getenv(""))
                 //.securityToken(System.getenv("ALIBABA_CLOUD_SECURITY_TOKEN")) // use STS token
