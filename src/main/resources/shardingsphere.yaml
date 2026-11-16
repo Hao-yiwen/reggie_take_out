@@ -1,0 +1,34 @@
+databaseName: reggie
+
+dataSources:
+  master:
+    dataSourceClassName: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://101.42.19.193:3306/reggie?characterEncoding=utf-8
+    username: root
+    password: hyw650022
+  slave:
+    dataSourceClassName: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://8.219.152.194:3306/reggie?characterEncoding=utf-8
+    username: root
+    password: hyw650022
+
+rules:
+- !SINGLE
+  tables:
+    - "*.*"
+  defaultDataSource: master
+- !READWRITE_SPLITTING
+  dataSourceGroups:
+    readwrite_ds:
+      writeDataSourceName: master
+      readDataSourceNames:
+        - slave
+      loadBalancerName: round_robin
+  loadBalancers:
+    round_robin:
+      type: ROUND_ROBIN
+
+props:
+  sql-show: true

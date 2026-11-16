@@ -10,9 +10,9 @@ import com.itheima.reggie.entity.SetmealDish;
 import com.itheima.reggie.service.CategoryService;
 import com.itheima.reggie.service.SetmealDishService;
 import com.itheima.reggie.service.SetmealService;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Parameters;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +44,7 @@ public class SetmealController {
      */
     @CacheEvict(value = "setmealCache",allEntries = true)
     @PostMapping
-    @ApiOperation("新增套餐接口")
+    @Operation(summary = "新增套餐接口")
     public R<String> save(@RequestBody SetmealDto setmealDto) {
         log.info("套餐信息: {}", setmealDto);
         setmealService.savaWithDish(setmealDto);
@@ -59,11 +59,11 @@ public class SetmealController {
      * @return
      */
     @GetMapping("/page")
-    @ApiOperation("新增分页查询接口")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "page",value = "页码",readOnly = true),
-            @ApiImplicitParam(name = "pageSize",value = "没业记录数",readOnly = true),
-            @ApiImplicitParam(name = "name",value = "套餐名称",readOnly = false)
+    @Operation(summary = "新增分页查询接口")
+    @Parameters({
+            @Parameter(name = "page", description = "页码"),
+            @Parameter(name = "pageSize", description = "没业记录数"),
+            @Parameter(name = "name", description = "套餐名称")
     })
     public R<Page> page(int page, int pageSize, String name) {
         Page<Setmeal> pageinfo = new Page<>(page, pageSize);

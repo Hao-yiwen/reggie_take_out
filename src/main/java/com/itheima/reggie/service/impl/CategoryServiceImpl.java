@@ -1,7 +1,7 @@
 package com.itheima.reggie.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.spring.service.impl.ServiceImpl;
 import com.itheima.reggie.common.CustomException;
 import com.itheima.reggie.entity.Category;
 import com.itheima.reggie.entity.Dish;
@@ -27,7 +27,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
 //        添加查询条件，根据分类id进行查询
         dishLambdaQueryWrapper.eq(Dish::getCategoryId, id);
         // 查询当前分类是否关联了菜单，如果已经关联了，抛出业务异常
-        int count = dishService.count(dishLambdaQueryWrapper);
+        long count = dishService.count(dishLambdaQueryWrapper);
         if (count > 0) {
 //            已经关联了菜品
             throw new CustomException("当前分类下关联了菜品，不能删除");
@@ -35,7 +35,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
         LambdaQueryWrapper<Setmeal> setmealLambdaQueryWrapper = new LambdaQueryWrapper<>();
         setmealLambdaQueryWrapper.eq(Setmeal::getCategoryId, id);
         //        查询分类是否关联了套餐，如果关联了，抛出业务异常
-        int count2 = setmealService.count(setmealLambdaQueryWrapper);
+        long count2 = setmealService.count(setmealLambdaQueryWrapper);
         if (count2 > 0) {
             throw new CustomException("当前套餐下关联了菜品，不能删除");
         }
