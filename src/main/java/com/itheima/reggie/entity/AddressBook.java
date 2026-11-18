@@ -2,8 +2,7 @@ package com.itheima.reggie.entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -12,76 +11,76 @@ import java.time.LocalDateTime;
  * 地址簿
  */
 @Data
-@ApiModel("地址簿")
+@Schema(description = "地址簿")
 public class AddressBook implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty("主键")
+    @Schema(description = "主键")
     private Long id;
 
 
     //用户id
-    @ApiModelProperty("用户id")
+    @Schema(description = "用户id")
     private Long userId;
 
 
     //收货人
-    @ApiModelProperty("收货人")
+    @Schema(description = "收货人")
     private String consignee;
 
 
     //手机号
-    @ApiModelProperty("手机号")
+    @Schema(description = "手机号")
     private String phone;
 
 
     //性别 0 女 1 男
-    @ApiModelProperty("性别")
+    @Schema(description = "性别")
     private String sex;
 
 
     //省级区划编号
-    @ApiModelProperty("省级区划编号")
+    @Schema(description = "省级区划编号")
     private String provinceCode;
 
 
     //省级名称
-    @ApiModelProperty("省级名称")
+    @Schema(description = "省级名称")
     private String provinceName;
 
 
     //市级区划编号
-    @ApiModelProperty("市级区划编号")
+    @Schema(description = "市级区划编号")
     private String cityCode;
 
 
     //市级名称
-    @ApiModelProperty("市级名称")
+    @Schema(description = "市级名称")
     private String cityName;
 
 
     //区级区划编号
-    @ApiModelProperty("区级区划编号")
+    @Schema(description = "区级区划编号")
     private String districtCode;
 
 
     //区级名称
-    @ApiModelProperty("区级名称")
+    @Schema(description = "区级名称")
     private String districtName;
 
 
     //详细地址
-    @ApiModelProperty("详细地址")
+    @Schema(description = "详细地址")
     private String detail;
 
 
     //标签
-    @ApiModelProperty("标签")
+    @Schema(description = "标签")
     private String label;
 
     //是否默认 0 否 1是
-    @ApiModelProperty("是否默认")
+    @Schema(description = "是否默认")
     private Integer isDefault;
 
     //创建时间
